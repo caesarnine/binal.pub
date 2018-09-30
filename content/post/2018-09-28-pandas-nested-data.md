@@ -5,7 +5,7 @@ author = "Binal Patel"
 tags = ["python","pandas"]
 categories = ["coding"]
 +++
-In this post we will walk through how to deal with nested data using Pandas (for example - a JSON string column), we'll transform that data into a tabular format that's easier to deal with and analyze.
+We'll walk through how to deal with nested data using Pandas (for example - a JSON string column), transforming that data into a tabular format that's easier to deal with and analyze.
 <!--more-->
 ***
 Import Modules
