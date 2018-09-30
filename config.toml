@@ -55,7 +55,7 @@ googleAnalytics = "UA-126288957-1"
   # date_format = "Jan 2, 2006"
 
   # Display post summaries instead of content in list templates (default: true)
-  truncate = false
+  truncate = true
 
   [params.sidebar]
     # Whether to show the recent posts or not (default: true)

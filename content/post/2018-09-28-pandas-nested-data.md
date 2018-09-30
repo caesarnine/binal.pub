@@ -5,7 +5,8 @@ author = "Binal Patel"
 tags = ["python","pandas"]
 categories = ["coding"]
 +++
-You'll often come across datasets where come of the elements are "nested", most often as a dictionary or JSON string. We'll step through how to take these columns and explode them out so they're in a tabular format as well.
+In this post we will walk through how to deal with nested data using Pandas, exploding (or flattening) that data into a tabular format that's easier to dealt with and analyze.
+<!--more-->
 ***
 Import Modules
 ```python
