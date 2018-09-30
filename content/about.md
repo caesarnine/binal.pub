@@ -1,5 +1,6 @@
 ---
 title: "About"
+disable_comments: true
 ---
 
 I am a data scientist and machine learning engineer with a focus on healthare. I currently work at Vituity, using applied data science to help improve patient lives and modernize healthcare infrastructure and processes. My prior roles include leading a data engineering team at Citadel, building out the technology behind the healthcare AI startup Jvion, and founding the data science practice at Bandwidth.com.

@@ -1,5 +1,6 @@
 ---
 title: "Contact"
+disable_comments: true
 ---
 
 Email me at binalkp91@gmail.com if you'd like to reach me.
