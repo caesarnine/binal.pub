@@ -4,6 +4,7 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 pygmentsCodeFences = true
 pygmentsStyle = "manni"
+disqusShortname = "binal"
 
 # Pagination
 paginate = 3
