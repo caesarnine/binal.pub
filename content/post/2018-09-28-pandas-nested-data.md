@@ -1,11 +1,11 @@
 +++
-title = "Exploding/Flattening Nested Data in Pandas"
+title = "Dealing with Nested Data in Pandas"
 date = 2018-09-28T02:13:50Z
 author = "Binal Patel"
 tags = ["python","pandas"]
 categories = ["coding"]
 +++
-In this post we will walk through how to deal with nested data using Pandas, exploding (or flattening) that data into a tabular format that's easier to dealt with and analyze.
+In this post we will walk through how to deal with nested data using Pandas (for example - a JSON string column), we'll transform that data into a tabular format that's easier to deal with and analyze.
 <!--more-->
 ***
 Import Modules
