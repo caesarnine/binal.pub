@@ -4,6 +4,7 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 pygmentsCodeFences = true
 pygmentsStyle = "manni"
+googleAnalytics = "UA-126288957-1"
 disqusShortname = "binal"
 
 # Pagination
@@ -17,8 +18,6 @@ theme = "hugo-bootstrap"
   tag = "tags"
   category = "categories"
 
-# Google analytics
-googleAnalytics = "UA-126288957-1"
 
 [languages.en]
   languageName = "English"

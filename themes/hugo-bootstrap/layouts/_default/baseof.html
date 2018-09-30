@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="{{ .Lang }}">
   <head>
+    111
+    {{ template "_internal/google_analytics.html" . }}
     {{ partial "head-meta" . }}
 
     <link rel="canonical" href="{{ .Permalink }}">
@@ -19,8 +21,6 @@
     {{ if .RSSLink }}
     <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
     {{ end }}
-
-    {{ template "_internal/google_analytics_async.html" . }}
 
     {{ partial "head-custom.html" . }}
   </head>
