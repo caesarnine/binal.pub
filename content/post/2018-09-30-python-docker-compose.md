@@ -218,7 +218,7 @@ As an example - here's my normal development process. Using it I can get from de
 5. Once I have a final version of my code, save it (and any models it relies on) into `/code`.
 6. Update the `docker-compose.prod.yml` file's `command` section to point to the my scripts' name, and the `image` section to point to my docker registry (something like my_registry/my_project:0.1).
 7. Run `docker-compose -f docker-compose.prod.yml build` - this builds the production version of the image, packaging everything in the `/code` and `/notebooks` directories directly onto the image.
-8. Run `docker-compose push` which pushes that packaged image into my organizations docker registry.
+8. Run `docker-compose -f docker-compose.prod.yml push` which pushes that packaged image into my organizations docker registry.
 
 At this point I now have an image that contains all my code, models, and other artifacts I need, that's preinstalled with exact versions of the Python packages and dependencies I require. It's stored in a central location where I can easily pull it down onto other servers.
 
@@ -241,3 +241,5 @@ Within production we have multiple options.
 3. We could do the same thing in AirFlow as well - using the [Docker Operator](https://airflow.apache.org/code.html?highlight=docker#airflow.operators.docker_operator.DockerOperator) or the [Bash Operator](https://airflow.apache.org/code.html?highlight=docker#airflow.operators.bash_operator.BashOperator) to run the image on some schedule, passing in the environment variables from Airflow's central variable store.
 
 4. The last option - and the one I'll explore further in an upcoming post - is using [MLflow](https://mlflow.org/) to extend the above framework to both track modelling iterations, and to serve the model as as a long-running REST API that we can call to make new predictions.
+
+Note: In practice we'd likely have some continuous deployment software in place that handles building the final image and pushing it into the registry once you check your code into version control. I didn't include that since that's very organization specific.
