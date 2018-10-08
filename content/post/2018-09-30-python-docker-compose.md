@@ -186,7 +186,7 @@ services:
 
 ```
 
-And last - our `.env` files will contain variables that we want available within the container at runtime. We'll populate `.env_dev` with development variables, and `.env_prod` with production variables.
+And last - our `.env` files will contain variables that we want available within the container at runtime. We'll populate `.env_dev` with development variables. When deployed we'll either pass in environment variables from a similar file (something like `.env_prod`), or pass in environment variables using something like AirFlow.
 
 `.env_dev`:
 ```bash
