@@ -6,21 +6,21 @@ tags = ["python","docker","ml engineering"]
 categories = ["coding"]
 +++
 
-I was hired as a data scientist at an early stage startup and soon after I was tasked with helping productionalize and deploy models as we ramped up more and more clients. The first few deploys were rushed, but easy - just setup the root environment with all the dependencies, and have a simple bash script call the code on a schedule.
+Soon after I started as a data scientist at an early stage startup I was tasked with helping productionalize and deploy analytical models as we ramped up more and more clients. The first few deploys were rushed, but relatively easy - just setup the root environment with all the dependencies, and have a simple bash script call the code on a schedule.
 
-Then as time went on things started to get messy. We started adding more data scientists, who all developed in different ways. Some of our earliest models relied on certain versions of packages, whereas some of the latest models were reliant on completely different (and sometimes breaking version) changes of the same package. 
+Then as time went on things started to get messy. We started adding more data scientists, who all developed in different ways. Some of our earliest models relied on certain versions of packages, whereas some of the latest models were reliant on completely different (and sometimes breaking version) enhancement of the same package.
 
-Our "production" server became incredibly fragile, one accidental update of a package version could (and did) take down multiple processes. We eventually figured out a home-grown solution that worked out, but that experience was painful enough that I took the time to figure out a good, reproducible way to deal with environments and deployments in subsequent roles.
+Our “production” server became incredibly fragile, one accidental update of a package version could (and did) take down multiple processes. We eventually figured out a home-grown solution that worked out, but that experience was painful.  This experience led me to taking the time to figure out a good, reproducible way to deal with environments and deployments in subsequent roles.
 
 #### The Final Product
 
-The final product will be a Docker Compose project that you can run in development mode and in production mode, switching easily between the two. 
+The final product will be a Docker Compose project that we can run in development mode and in production mode, switching easily between the two. 
     
-1. Development mode will fire up a JupyterLab instance where you can prototype and test code
+1. Development mode will fire up a JupyterLab instance where we can prototype and test code
 2. Production mode will run a productionalized Python script
-3. Environment variables control whether we're hitting development or production systems
+3. Environment variables control whether we are hitting development or production systems
 
-Additionally - once we're ready for production we'll have a Docker image that's easily deployable via a variety of different methods.
+Additionally - once ready for production a Docker image that’s easily deployable via a variety of different methods will be available.
 
 You can find the complete project here:
 
@@ -204,6 +204,15 @@ random_seed=42
 Within our Python scripts we can then simply access these variables via `os.environ.get('variable_name')`. This allows us to store sensitive data, without having it hardcoded within our scripts, nor storing it within our repository. More so - we don't have to change our code to change the environments we run in, we just have to change what docker-compose file we run with.
 
 **Make sure to add .env* to your `.gitignore` file, otherwise you may accidently commit it to Git.**
+
+If you clone down the repo as it is this is the default `.gitignore`, which will ignore everything except the `.env_dev` version.
+
+`.gitignore`:
+
+```
+.env*
+!.env_dev
+```
 
 #### How to Use This All
 
