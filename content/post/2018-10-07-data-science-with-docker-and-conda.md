@@ -14,7 +14,7 @@ Our “production” server became incredibly fragile, one accidental update of 
 
 #### The Final Product
 
-The final product will be a Docker Compose project that we can run in development mode and in production mode, switching easily between the two. 
+The final product will be a Docker project that we can run in development mode and in production mode, switching easily between the two. It's important to note that all development will occur within a Docker container.
     
 1. Development mode will fire up a JupyterLab instance where we can prototype and test code
 2. Production mode will run a productionalized Python script
