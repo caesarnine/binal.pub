@@ -8,7 +8,7 @@ categories = ["coding"]
 
 In my previous post I went through an example that involved in part running JupyterLab within Docker. This allowed us to directly develop within the container, which makes deploying and productionalizing that much easier since we don't have to worry about developing against one environment while deploying against a different one.
 
-That being said Jupyter Lab isn't the most ideal development environment. It's great for prototyping via Jupyter notebooks, but it's lacking as a full IDE. My go to nowadays is Microsoft's VSCode, and as I learned recently you can actually run it directly within Docker due to the [Coder](https://coder.com/) team's great work.
+That being said JupyterLab isn't the most ideal development environment. It's great for prototyping via Jupyter notebooks, but it's lacking as a full IDE. My go to nowadays is Microsoft's VSCode, and as I learned recently you can actually run it directly within Docker due to the [Coder](https://coder.com/) team's great work.
 
 Here's how I set it up - as before my focus was on setting up a data science environment where I could quickly iterate within the container itself.
 
