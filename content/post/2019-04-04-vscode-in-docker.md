@@ -16,6 +16,10 @@ Here's how I set it up - as before my focus was on setting up a data science env
 
 #### TLDR
 
+You can find a fully working example here:
+
+https://github.com/caesarnine/data-science-docker-vscode-template
+
 Why is this useful?
 
 1. You can develop all your code in a fully specified environment, which makes it much easier to reproduce and deploy models and analysis.
@@ -24,9 +28,6 @@ Why is this useful?
 
     Running containers like this within a secure environment with access to the data helps us to have an ideal development environment, while ensuring the protected data remains in a secure, single location with no unnecessary duplication.
 
-You can find a fully working example here:
-
-https://github.com/caesarnine/data-science-docker-vscode-template
 
 #### The Details
 
