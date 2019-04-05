@@ -18,6 +18,12 @@ You can find a fully working example here:
 
 https://github.com/caesarnine/data-science-docker-vscode-template
 
+#### Why Is This Useful?
+
+1. You can develop directly in the container in a fully specified environment. This makes it much easier to do reproducible, deployable work.
+2. The setup I've described is local - but you could just as well run this container (with security enabled) alongside your data. Instead of transferring data back and forth you could move your IDE into the same environment as your data. This is especially useful with very large datasets.
+3. In regulated environments (like my own, healthcare) it's less than ideal to allow certain classes of data to be transmitted and stored on users' laptops. Setups like this allow us to have an ideal development experience, while making sure the data remains in a secure, locked down location.
+
 
 #### The Details
 
