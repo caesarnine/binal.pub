@@ -6,24 +6,27 @@ tags = ["docker", "ml engineering"]
 categories = ["coding"]
 +++
 
-In my previous post I went through an example that involved in part running JupyterLab within Docker. This allowed us to directly develop within the container, which makes deploying and productionalizing that much easier since we don't have to worry about developing against one environment while deploying against a different one.
+I was excited to learn recently that you can run VSCode within Docker containers, due to the great work from the [Coder](https://coder.com/) team. Up until now I've been running JupyterLab within containers, which - while allowing for quick prototyping, was less than ideal as a full featured IDE. I've updated the Dockerfile's I often use - which now include:
 
-That being said JupyterLab isn't the most ideal development environment. It's great for prototyping via Jupyter notebooks, but it's lacking as a full IDE. My go to nowadays is Microsoft's VSCode, and as I learned recently you can actually run it directly within Docker due to the [Coder](https://coder.com/) team's great work.
+1. Conda - for Python dependencies
+2. VSCode - for a full featured IDE
+3. JupyterLab - for quick prototyping via notebooks
 
 Here's how I set it up - as before my focus was on setting up a data science environment where I could quickly iterate within the container itself.
 
 #### TLDR
 
+Why is this useful?
+
+1. You can develop all your code in a fully specified environment, which makes it much easier to reproduce and deploy models and analysis.
+2. You can (after enabling security) move your IDE to the data. Instead of transferring data back and forth you can develop where your data is stored.
+3. Last - and most important for me - in industries like my own (healthcare), you work with highly regulated data that has to be stored securely, where having multiple copies of data on multiple laptops can pose an unacceptably large risk. 
+
+    Running containers like this within a secure environment with access to the data helps us to have an ideal development environment, while ensuring the protected data remains in a secure, single location with no unnecessary duplication.
+
 You can find a fully working example here:
 
 https://github.com/caesarnine/data-science-docker-vscode-template
-
-#### Why Is This Useful?
-
-1. You can develop directly in the container in a fully specified environment. This makes it much easier to do reproducible, deployable work.
-2. The setup I've described is local - but you could just as well run this container (with security enabled) alongside your data. Instead of transferring data back and forth you could move your IDE into the same environment as your data. This is especially useful with very large datasets.
-3. In regulated environments (like my own, healthcare) it's less than ideal to allow certain classes of data to be transmitted and stored on users' laptops. Setups like this allow us to have an ideal development experience, while making sure the data remains in a secure, locked down location.
-
 
 #### The Details
 
