@@ -6,6 +6,13 @@ tags = ["docker", "ml engineering"]
 categories = ["coding"]
 +++
 
+#### 2020 Update
+A lot has changed since I first wrote this post - as of today I'd recommend you use [VSCode Remote Containers Extension](https://code.visualstudio.com/docs/remote/containers) instead of this. PyCharm has similar functionality as well.**
+
+What I normally do now - start up a remote container on a development server running JupyerLab (still using Conda for the Python environment), and attach to it. [These docs](https://code.visualstudio.com/docs/remote/containers) may be useful is you want to do that. I can then port-forward `8888` if I want to use Juypter, or just directly develop within VSCode within the remote container.
+
+#### Original Post
+
 I was excited to learn recently that you can run VSCode within Docker containers, due to the great work from the [Coder](https://coder.com/) team. Up until now I've been running JupyterLab within containers, which - while allowing for quick prototyping, was less than ideal as a full featured IDE. I've updated the Dockerfile's I often use - which now include:
 
 1. Conda - for Python dependencies
