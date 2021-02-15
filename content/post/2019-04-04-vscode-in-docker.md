@@ -7,7 +7,7 @@ categories = ["coding"]
 +++
 
 #### 2020 Update
-A lot has changed since I first wrote this post - as of today I'd recommend you use [VSCode Remote Containers Extension](https://code.visualstudio.com/docs/remote/containers) instead of this. PyCharm has similar functionality as well.**
+A lot has changed since I first wrote this post - as of today I'd recommend you use [VSCode Remote Containers Extension](https://code.visualstudio.com/docs/remote/containers) instead of this. PyCharm has similar functionality as well.
 
 What I normally do now - start up a remote container on a development server running JupyerLab (still using Conda for the Python environment), and attach to it. [These docs](https://code.visualstudio.com/docs/remote/containers) may be useful is you want to do that. I can then port-forward `8888` if I want to use Juypter, or just directly develop within VSCode within the remote container.
 
