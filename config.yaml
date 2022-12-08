@@ -1,0 +1,31 @@
+baseurl: /
+title: Binal Patel
+languageCode: en-us
+defaultContentLanguage: en
+pygmentsCodeFences: true
+pygmentsStyle: manni
+googleAnalytics: UA-126288957-1
+disqusShortname: binal
+paginate: 3
+paginatePath: page
+theme: PaperMod
+taxonomies:
+  tag: tags
+  category: categories
+languages:
+  en:
+    languageName: English
+    copyright: Copyright Binal Patel
+    menu:
+      main:
+        - url: /
+          name: Home
+          weight: 1
+        - url: /about/
+          name: About
+          weight: 2
+        - url: /contact/
+          name: Contact
+          weight: 3
+permalinks:
+  post: /:year/:month/:title/
