@@ -99,6 +99,8 @@ agent.respond('Cindy', '''Hey! Could you remind me of what we talked about last 
 
 The code for the above agent here:
 ```python
+import openai
+
 class Agent():
   def __init__(self, name):
     self.name = name
