@@ -14,7 +14,9 @@ Here's the first - a rough pass on how to enable GPT3 to retain memory of past e
 
 The general idea is - after every conversation we have just ask GPT3 to progressively update a summary (memory) of the interaction with a specific "person". 
 
-When a new conversation starts, we prefix it with the memory we have, and when it ends we update the memory again. Here's some real output from this:
+When a new conversation starts, we prefix it with the memory we have, and when it ends we update the memory again. 
+
+Here's some real output from this. The code for the agent is at the bottom of this post.
 
 ```python
 agent = Agent('John')
