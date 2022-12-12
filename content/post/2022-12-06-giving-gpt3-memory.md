@@ -1,14 +1,16 @@
 +++
 title = "Giving GPT3 Memories"
-date = 2022-12-08T02:13:50Z
+date = 2022-12-11T02:13:50Z
 author = "Binal Patel"
 tags = ["nlp", "gpt3", "llm"]
 categories = ["coding"]
 +++
 
-I've been playing around with GPT3 (and ChatGPT) a lot and have been wanting to start posting again, so decided to start posting little experiments I do. These won't be polished but hopefully interesting at least.
+I've been playing around with GPT3 (and ChatGPT) a lot and have been wanting to start posting again, so I decided to start posting little experiments I do. These won't be polished but hopefully interesting at least.
 
 Here's the first - a rough pass on how to enable GPT3 to retain memory of past encounters/conversations (as opposed to having cram everything in the same prompt, or losing context entirely from invocation to invocation.).
+
+>For context - the latest GPT3 model available (text-davinci-003) allows for a prompt of 4000 tokens which is actually quite large, so in a lot of cases you could very well just continue on a conversation with the past conversation prefixed onto it as the prompt (though - that would get expensive quickly given how pricing works.)
 
 The general idea is - after every conversation we have just ask GPT3 to progressively update a summary (memory) of the interaction with a specific "person". 
 
@@ -170,3 +172,16 @@ class Agent():
 
     self.other_memory[other_person] = response
 ```
+The above is pretty much the most basic of examples - the downsides I've seen of using it as is, which could maybe be fixed with a better prompt/added metadata to the prompts:
+* It sometimes doesn't understand something happened in the past. I.E. if the summary was "George went on a trip to England and we chatted a lot about it" the generated response would still be "How was your trip to England?"
+* There's no prioritization of important memories vs unimportant facts.
+* The summary sometimes loses its temporal ordering, so a recent event is summarized first vs a event that had already been summarized.
+
+Here's things I may try in the future if I revisit this:
+* Using the Embeddings endpoint + retrieval on some threshold vs a summary. 
+  * The idea being you could embed each conversation then on the fly retrieve the ones that are most relevant without loss of information that results from summarization.
+  * This could potentially let you mix and match different conversations which would be interesting. I.E. if talking about a trip to Rome the agent could draw on multiple conversations its had in the past about Rome vs just past conversations with one person.
+* Per conversation summaries vs a global summary that's updated.
+* Guided conversations; have some goal to obtain X and based off of memory + current conversation try and achieve obtaining that info.
+* Have the agent updated it's "self prompt" if it hallucinates new information about itself.
+  * Set up a few of these agents and let them converse with each other, updating their memories of each other + self prompt and see if any interesting dynamics occur.
