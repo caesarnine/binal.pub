@@ -18,6 +18,8 @@ The general idea is - after every conversation we have just ask GPT3 to progress
 
 When a new conversation starts, we prefix it with the memory we have, and when it ends we update the memory again. 
 
+Here's some real output from this.
+
 ```python
 agent = Agent('John')
 agent.respond('Cindy', '''Hi! How are you?''')
