@@ -1,5 +1,5 @@
 +++
-title = "Giving GPT3 Memories"
+title = "Giving GPT3 Long Term Memory via Summarization"
 date = 2022-12-11T02:13:50Z
 author = "Binal Patel"
 tags = ["nlp", "gpt3", "llm"]
