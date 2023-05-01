@@ -29,3 +29,7 @@ languages:
           weight: 3
 permalinks:
   post: /:year/:month/:title/
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
