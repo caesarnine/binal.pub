@@ -8,7 +8,7 @@ googleAnalytics: UA-126288957-1
 disqusShortname: binal
 paginate: 3
 paginatePath: page
-theme: PaperMod
+theme: ["hugo-video", "PaperMod"]
 taxonomies:
   tag: tags
   category: categories
