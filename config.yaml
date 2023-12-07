@@ -4,7 +4,10 @@ languageCode: en-us
 defaultContentLanguage: en
 pygmentsCodeFences: true
 pygmentsStyle: manni
-googleAnalytics: UA-126288957-1
+GoogleAnalyticsID: G-PYH0YL9RZ9
+services:
+  googleAnalytics:
+    ID: G-PYH0YL9RZ9
 disqusShortname: binal
 paginate: 3
 paginatePath: page
