@@ -6,6 +6,8 @@ tags = ["gpt4", "llm", "gptv"]
 categories = ["coding"]
 +++
 
+The code for this post is [here](https://github.com/caesarnine/llm-experiments/blob/main/3_structured_ocr_with_gpt_vision/pdf_parser.py).
+
 I'm continuously impressed with GPT Vision the more I use it. I've recently been working on a side project that involves parsing PDFs with embedded tables/images/flow charts for a RAG (retrieval augmented generation) chatbot, and found the most painful part to be dealing with parsing and structuring the PDFs.
 
 There's a lot of knobs to mess with (query rewriting, chunking, embedding, retrieval process, reranking etc) which are all next to useless if the input text is garbled.
@@ -188,4 +190,3 @@ class Page(BaseModel):
     sections: list[Section] = []
     figures: list[Figure] = []
 ```
-
