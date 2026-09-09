@@ -1,0 +1,65 @@
+[
+  {
+    "file": "content/post/2018-09-28-pandas-nested-data/index.md",
+    "route": "/2018/09/dealing-with-nested-data-in-pandas/",
+    "media": [],
+    "bodyHash": "914571a0828d7cf54f71d2748921fa8e6bf8f0ed4e3b682b5107e3cf3437f3e8",
+    "mediaHashes": {}
+  },
+  {
+    "file": "content/post/2018-10-07-data-science-with-docker-and-conda/content.md",
+    "route": "/2018/10/data-science-with-docker-and-conda/",
+    "media": [],
+    "bodyHash": "25efad8025ea9ab45dfb201f08d519cc044065727c6e45acccfd6798413c793a",
+    "mediaHashes": {}
+  },
+  {
+    "file": "content/post/2019-04-04-vscode-in-docker/content.md",
+    "route": "/2019/04/running-vscode-in-docker/",
+    "media": [
+      "/2019/04/running-vscode-in-docker/vscode.png"
+    ],
+    "bodyHash": "dc4a7d55e3fe7c202337b75cd8cb3996de21ed1f1bddcd6a916052c9ce3980c2",
+    "mediaHashes": {
+      "/2019/04/running-vscode-in-docker/vscode.png": "79926b7d643b46ae22b9c3a514b1ec3a997a8eb51e8b7b0ba0eddcb49aeaf544"
+    }
+  },
+  {
+    "file": "content/post/2022-12-06-giving-gpt3-memory/index.md",
+    "route": "/2022/12/giving-gpt3-long-term-memory-via-summarization/",
+    "media": [],
+    "bodyHash": "5eb66963a8b939cccd49affc6ee5636dd40bb2fb05d804dd59c120d6b9182e71",
+    "mediaHashes": {}
+  },
+  {
+    "file": "content/post/2022-12-19-llm-extracting-and-structuring-recipes/index.md",
+    "route": "/2022/12/extracting-and-structuring-recipes-using-gpt3/",
+    "media": [
+      "/2022/12/extracting-and-structuring-recipes-using-gpt3/gpt3-parsing-recipe.gif"
+    ],
+    "bodyHash": "7a08765fe608520a45f5197a07fb48a44781cf54549994272dfb974095140705",
+    "mediaHashes": {
+      "/2022/12/extracting-and-structuring-recipes-using-gpt3/gpt3-parsing-recipe.gif": "feca5b454ee36824f586a3675c3e3e81a4bb776590dfc5b6051dce3e6fce84e4"
+    }
+  },
+  {
+    "file": "content/post/2023-04-27-rank-gpt/content.md",
+    "route": "/2023/04/ranking-anything-with-gpt4/",
+    "media": [],
+    "bodyHash": "4f6f0f2f48fe306e4f1a221c68ae9b91ef738173c331afc81fe67df574f94fbb",
+    "mediaHashes": {}
+  },
+  {
+    "file": "content/post/2023-12-1-ocr-but-better/index.md",
+    "route": "/2023/12/structured-ocr-with-gpt-vision/",
+    "media": [
+      "/2023/12/structured-ocr-with-gpt-vision/gpt4-structured-ocr.mp4",
+      "/2023/12/structured-ocr-with-gpt-vision/gpt4v-ocr.png"
+    ],
+    "bodyHash": "f6581d90781227f4fbae4848b65edb997bcaf3cfa0f9d1894c6dfb73191d6eae",
+    "mediaHashes": {
+      "/2023/12/structured-ocr-with-gpt-vision/gpt4-structured-ocr.mp4": "a43095a096b59a74279dbc6c546a5fa87b0d80f9935f943bda04388d133198f0",
+      "/2023/12/structured-ocr-with-gpt-vision/gpt4v-ocr.png": "eff9e6d36f127dd48547d733510ebb3a16373cff54ae4e34da2ebcabf3e19394"
+    }
+  }
+]

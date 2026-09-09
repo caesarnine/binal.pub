@@ -1,0 +1,8 @@
+---
+import { getPosts } from '../../../lib/posts';
+import { paginate } from '../../../lib/paths.mjs';
+export async function getStaticPaths() {
+  return paginate(await getPosts()).map((_, i) => ({ params: { page: String(i + 1) } }));
+}
+return Astro.redirect(Astro.params.page === '1' ? '/post/' : `/page/${Astro.params.page}/`, 301);
+---

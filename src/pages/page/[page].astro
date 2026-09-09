@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+import { paginate } from '../../lib/paths.mjs';
+export async function getStaticPaths() {
+  const pages = paginate(await getPosts());
+  return pages.map((posts, i) => ({ params: { page: String(i + 1) }, props: { posts, current: i + 1, total: pages.length } }));
+}
+const { posts, current, total } = Astro.props;
+---
+<Base title={`Writing · Page ${current}`}>
+  <header class="page-heading"><p class="eyebrow">The archive</p><h1>Writing</h1></header>
+  <PostList posts={posts} />
+  <nav class="pagination" aria-label="Archive pages">
+    {current > 1 ? <a href={current === 2 ? '/' : `/page/${current - 1}/`}>← Newer</a> : <a href="/">← Home</a>}
+    <span>{current} / {total}</span>
+    {current < total ? <a href={`/page/${current + 1}/`}>Older →</a> : <a href="/post/">All writing</a>}
+  </nav>
+</Base>

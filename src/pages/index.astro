@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts, PAGE_SIZE } from '../lib/posts';
+const posts = await getPosts();
+---
+<Base kind="home">
+  <section class="introduction" aria-labelledby="intro-title">
+    <h1 id="intro-title">Binal Patel</h1>
+    <p>Machine learning engineer &amp; data scientist.</p>
+  </section>
+  <section class="writing" aria-labelledby="writing-title">
+    <div class="section-heading"><h2 id="writing-title">Writing</h2><span>Notes &amp; experiments</span></div>
+    <PostList posts={posts.slice(0, PAGE_SIZE)} />
+    <div class="archive-links"><a class="text-link" href="/post/">All writing <span aria-hidden="true">→</span></a><a href="/index.xml">RSS</a></div>
+  </section>
+</Base>

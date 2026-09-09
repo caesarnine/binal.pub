@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts, slugify } from '../../lib/posts';
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return (['tags', 'categories'] as const).flatMap(taxonomy => {
+    const terms = [...new Set(posts.flatMap(post => post.data[taxonomy]))].sort();
+    return [
+      { params: { taxonomy, term: undefined }, props: { taxonomy, terms, posts, term: '' } },
+      ...terms.map(term => ({ params: { taxonomy, term: slugify(term) }, props: { taxonomy, terms, term, posts: posts.filter(post => post.data[taxonomy].includes(term)) } })),
+    ];
+  });
+}
+const { taxonomy, terms, term, posts } = Astro.props;
+const title = term || (taxonomy === 'tags' ? 'Topics' : 'Categories');
+---
+<Base title={title}>
+  <header class="page-heading"><p class="eyebrow"><a href="/post/">All writing</a></p><h1>{title}</h1></header>
+  {term ? <><PostList posts={posts} /><div class="archive-links"><a href={`/${taxonomy}/`}>All {taxonomy === 'tags' ? 'topics' : 'categories'}</a><a href={`/${taxonomy}/${slugify(term)}/index.xml`}>RSS</a></div></> : <ul class="taxonomy-list">{terms.map(item => <li><a href={`/${taxonomy}/${slugify(item)}/`}>{item}</a> <small>({posts.filter(post => post.data[taxonomy].includes(item)).length})</small></li>)}</ul>}
+</Base>

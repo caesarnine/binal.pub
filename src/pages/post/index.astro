@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+const posts = await getPosts();
+---
+<Base title="All writing">
+  <header class="page-heading"><p class="eyebrow">The archive</p><h1>All writing</h1><p class="deck">Notes on machine learning, data, and building things.</p></header>
+  <PostList posts={posts} />
+  <div class="archive-links"><a href="/tags/">Browse by topic</a><a href="/index.xml">RSS</a></div>
+</Base>
