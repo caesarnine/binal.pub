@@ -5,7 +5,7 @@ export default defineConfig({
   trailingSlash: 'always',
   output: 'static',
   markdown: {
-    shikiConfig: { theme: 'github-light', langs: ['python', 'json', 'dockerfile', 'yaml', 'bash'] },
+    shikiConfig: { theme: 'github-dark', langs: ['python', 'json', 'dockerfile', 'yaml', 'bash'] },
   },
   devToolbar: { enabled: false },
 });

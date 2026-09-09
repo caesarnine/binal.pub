@@ -1,6 +1,6 @@
 # binal.pub
 
-Binal Patel's blog, built with Astro and Markdown. A continuous pixel-art river accompanies the writing, with gently flowing water and a turning mill wheel.
+Binal Patel's blog, built with Astro and Markdown. A pixel-art garden overlooks a mountain lake at blue hour, with gently moving water and foliage, and fireflies that respond to the reader.
 
 ## Work on the site
 
@@ -43,7 +43,7 @@ draft: true
 Your Markdown goes here.
 ```
 
-Set `draft: false` when ready, commit, and deploy. The writing index, archive, topic pages, RSS, sitemap, and docks update automatically. Posts dated in the future are omitted until a build on or after that date. No scenery edits are needed, even with long titles or more posts. Keep `permalink` unchanged after publishing so existing links remain valid.
+Set `draft: false` when ready, commit, and deploy. The writing index, archive, topic pages, RSS, and sitemap update automatically. Posts dated in the future are omitted until a build on or after that date. No scenery edits are needed, even with long titles or more posts. Keep `permalink` unchanged after publishing so existing links remain valid.
 
 For images or video, put files in `public/` (for example `public/media/my-post/diagram.png`) and reference their public path in Markdown: `![Diagram](/media/my-post/diagram.png)`. Use ordinary HTML `<video controls playsinline preload="metadata">` for video. Astro highlights fenced code blocks automatically.
 
@@ -52,14 +52,14 @@ For images or video, put files in `public/` (for example `public/media/my-post/d
 - `content/post/`: all seven migrated articles, plus future posts.
 - `content/about.md` and `content/contact.md`: editable profile pages.
 - `src/styles/global.css`: typography, layout, colors, and responsive rules.
-- `src/components/River.astro` and `src/scripts/river.ts`: isolated scenery and motion.
-- `public/art/`: two transparent raster assets. Their creation prompts are in `docs/art-prompts.md`.
+- `src/components/Garden.astro` and `src/scripts/garden.ts`: shared scenery, interaction, and motion.
+- `public/art/blue-hour-garden.png`: the garden illustration. Its creation prompt and integration notes are in `docs/blue-hour-garden.md`.
 - `src/lib/paths.mjs`: shared URL, draft filtering, and pagination rules.
 - `tests/migration-manifest.json`: original post URLs and media checksums.
 
-The river uses one small canvas at a capped 24 fps. Water pixels refract gently; a masked region inside the mill wheel rotates. It pauses when the tab or scenery is out of view, respects reduced-motion preferences, and has a persistent pause control. The original image remains visible if JavaScript or canvas is unavailable. On phones the artwork becomes a small source of the river beside the introduction, keeping the writing full width. Article pages on phones omit the scenery.
+The garden uses a small WebGL canvas for drifting clouds, independent city lights, greenhouse glow, wind through foliage, and water reflections, plus a 2D canvas for fireflies. It is capped at 30 fps and 1152 drawing pixels wide. It pauses when the tab or scenery is out of view, respects reduced-motion preferences, and has a persistent pause control. The original image stays visible if JavaScript or WebGL is unavailable. Moving a pointer gathers fireflies; tapping or pressing Enter on the focused garden wakes more and sends a ripple through the water.
 
-Docks belong to article rows in CSS, so their position follows the content without JavaScript measurements. The river is sticky beside long pages; it does not grow into an enormous illustration as the archive grows.
+The homepage shows a wide vista above recent writing. Articles and archive pages use a shallower panorama and a centered reading column. Both use the same image proportions, with cropping rather than stretching. The scene scrolls away before the article body, so long posts keep a quiet reading surface. On phones the garden and writing stack naturally, with touch interactions that allow vertical scrolling.
 
 ## Deployment
 
@@ -82,4 +82,4 @@ All original article URLs and media URLs are preserved. About, contact, tags, ca
 
 `npm run test:migration` is a separate one-time audit of the seven original article bodies and media bytes, allowing only the required syntax conversions. It records the migration baseline; intentional later edits to old posts may differ from that baseline without indicating a site error.
 
-The river layout has been checked in the browser on the homepage and an article at 1440px, 1082px, 900px, and 390px viewport widths, including scrolling through the article. Both routes share the same scenery dimensions and opacity on desktop; the image and animated canvas preserve their intrinsic aspect ratios. This was a focused river-layout check, not a full-site browser audit.
+The original river design remains available in Git history. The local `codex/interactive-vistas` branch preserves the three landscape experiments separately from the production garden theme.
