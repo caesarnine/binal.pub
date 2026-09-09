@@ -1,10 +1,12 @@
-+++
-title = "Ranking Anything with GPT4"
-date = 2023-04-30
-author = "Binal Patel"
-tags = ["nlp", "gpt4", "llm"]
-categories = ["coding"]
-+++
+---
+title: "Ranking Anything with GPT4"
+date: "2023-04-30"
+author: "Binal Patel"
+tags: ["nlp","gpt4","llm"]
+categories: ["coding"]
+permalink: "/2023/04/ranking-anything-with-gpt4/"
+description: "Using language models to find the right things, in the right order."
+---
 
 I've been fascinated by this paper: [Is ChatGPT Good at Search? Investigating Large Language Models as Re-Ranking Agent](https://arxiv.org/abs/2304.09542) and have been trying out the ideas with success in a few personal projects.
 

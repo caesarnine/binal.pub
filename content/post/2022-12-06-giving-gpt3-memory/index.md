@@ -1,10 +1,12 @@
-+++
-title = "Giving GPT3 Long Term Memory via Summarization"
-date = 2022-12-11T02:13:50Z
-author = "Binal Patel"
-tags = ["nlp", "gpt3", "llm"]
-categories = ["coding"]
-+++
+---
+title: "Giving GPT3 Long Term Memory via Summarization"
+date: "2022-12-11T02:13:50Z"
+author: "Binal Patel"
+tags: ["nlp","gpt3","llm"]
+categories: ["coding"]
+permalink: "/2022/12/giving-gpt3-long-term-memory-via-summarization/"
+description: "Making room for longer conversations with a little summarization."
+---
 
 The code for this post is [here](https://github.com/caesarnine/llm-experiments/tree/main/1_memories_via_summarization).
 

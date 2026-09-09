@@ -1,0 +1,24 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import PostList from '../../../../components/PostList.astro';
+import { getPosts, slugify } from '../../../../lib/posts';
+import { paginate } from '../../../../lib/paths.mjs';
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return (['tags', 'categories'] as const).flatMap(taxonomy => [...new Set(posts.flatMap(post => post.data[taxonomy]))].flatMap(term => {
+    const pages = paginate(posts.filter(post => post.data[taxonomy].includes(term)));
+    return pages.map((items, i) => ({ params: { taxonomy, term: slugify(term), page: String(i + 1) }, props: { title: term, posts: items, current: i + 1, total: pages.length } }));
+  }));
+}
+const { title, posts, current, total } = Astro.props;
+const base = `/${Astro.params.taxonomy}/${Astro.params.term}/`;
+---
+<Base title={`${title} · Page ${current}`}>
+  <header class="page-heading"><p class="eyebrow"><a href="/post/">All writing</a></p><h1>{title}</h1></header>
+  <PostList posts={posts} />
+  <nav class="pagination" aria-label="Archive pages">
+    <a href={current > 1 ? `${base}page/${current - 1}/` : base}>← Newer</a>
+    <span>{current} / {total}</span>
+    {current < total ? <a href={`${base}page/${current + 1}/`}>Older →</a> : <a href={base}>All posts</a>}
+  </nav>
+</Base>

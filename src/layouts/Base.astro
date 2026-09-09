@@ -1,0 +1,61 @@
+---
+import River from '../components/River.astro';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; kind?: 'home' | 'article' | 'page'; date?: Date; }
+const { title = 'Binal Patel', description = 'Notes on machine learning, data, and building things.', kind = 'page', date } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const pageTitle = title === 'Binal Patel' ? 'Binal Patel · binal.pub' : `${title} · binal.pub`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf7ef" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="Binal Patel" href="/index.xml" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={kind === 'article' ? 'article' : 'website'} />
+    <meta property="og:url" content={canonical} />
+    {date && <meta property="article:published_time" content={date.toISOString()} />}
+    <meta name="twitter:card" content="summary" />
+    <script is:inline>
+      // Retain the existing analytics property on the public blog only.
+      if (location.hostname === 'binal.pub' || location.hostname === 'www.binal.pub') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-PYH0YL9RZ9');
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-PYH0YL9RZ9';
+        document.head.append(script);
+      }
+    </script>
+  </head>
+  <body class:list={[`view-${kind}`]}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <div class="page-column">
+        <header class="site-header">
+          <a class="wordmark" href="/" aria-label="binal.pub home">binal.pub<span class="wordmark-dot">.</span></a>
+          <nav aria-label="Main navigation">
+            <a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>Writing</a>
+            <a href="/about/" aria-current={Astro.url.pathname === '/about/' ? 'page' : undefined}>About</a>
+            <a href="https://github.com/caesarnine">GitHub <span aria-hidden="true">↗</span></a>
+          </nav>
+        </header>
+        <main id="main"><slot /></main>
+        <footer class="site-footer">
+          <span>© {new Date().getUTCFullYear()} Binal Patel</span>
+          <div><a href="/contact/">Contact</a><a href="/index.xml">RSS</a><button class="motion-toggle" type="button" hidden aria-pressed="false">Pause scenery</button></div>
+        </footer>
+      </div>
+      <River />
+    </div>
+  </body>
+</html>

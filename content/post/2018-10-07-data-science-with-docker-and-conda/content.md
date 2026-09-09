@@ -1,10 +1,12 @@
-+++
-title = "Data Science with Docker and Conda"
-date = 2018-10-07T02:13:50Z
-author = "Binal Patel"
-tags = ["python","docker","ml engineering"]
-categories = ["coding"]
-+++
+---
+title: "Data Science with Docker and Conda"
+date: "2018-10-07T02:13:50Z"
+author: "Binal Patel"
+tags: ["python","docker","ml engineering"]
+categories: ["coding"]
+permalink: "/2018/10/data-science-with-docker-and-conda/"
+description: "Reproducible environments for the whole data science workflow."
+---
 
 Soon after I started as a data scientist at an early stage startup I was tasked with helping productionalize and deploy analytical models as we ramped up more and more clients. The first few deploys were rushed, but relatively easy - just setup the root environment with all the dependencies, and have a simple bash script call the code on a schedule.
 
@@ -61,7 +63,7 @@ The core of this all will be our Dockerfile - it's the configuration that tells 
 We'll have two different versions, with the production version having two additional commands to package directories into the docker image as well.
 
 `Dockerfile-dev`:
-```docker
+```dockerfile
 # base image
 FROM continuumio/miniconda3:4.5.11
 
@@ -73,7 +75,7 @@ RUN conda update -n base conda -y && conda env update
 ```
 
 `Dockerfile-prod`:
-```docker
+```dockerfile
 # base image
 FROM continuumio/miniconda3:4.5.11
 
@@ -136,7 +138,7 @@ my_project
 This will be our `docker-compose.yml` file. It's our "sane default". At worst all that'll happen from accidentally running ```docker-compose up``` is that JuypterLab will start up. (As opposed to a script starting up that hits production systems). In practice I also sometimes end up adding in other containers, such a database container that allows for quick iteration without having to hit external systems.
 
 `docker-compose.yml`:
-```docker-compose
+```yaml
 version: "3.2"
 
 services:
@@ -163,7 +165,7 @@ services:
 Our `docker-compose.prod.yml` file will be similar, with the exception of the ports and the command. You'll notice that it doesn't mount the local `./code` and `./notebooks` folders anymore (since they'll be packaged into the image).
 
 `docker-compose.prod.yml`:
-```docker-compose
+```yaml
 version: "3.2"
 
 services:

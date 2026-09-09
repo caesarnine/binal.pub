@@ -1,10 +1,12 @@
-+++
-title = "Structured OCR with GPT Vision"
-date = 2023-12-01
-author = "Binal Patel"
-tags = ["gpt4", "llm", "gptv"]
-categories = ["coding"]
-+++
+---
+title: "Structured OCR with GPT Vision"
+date: "2023-12-01"
+author: "Binal Patel"
+tags: ["gpt4","llm","gptv"]
+categories: ["coding"]
+permalink: "/2023/12/structured-ocr-with-gpt-vision/"
+description: "Turning complex PDFs into structured data with GPT Vision."
+---
 
 The code for this post is [here](https://github.com/caesarnine/llm-experiments/blob/main/3_structured_ocr_with_gpt_vision/pdf_parser.py).
 
@@ -18,7 +20,7 @@ First - it does a great job at OCR, which isn't super surprising given all it's 
 
 What I was pleasantly surprised by was that I could prompt it to output the OCRed text in an incredibly structured manner, doing things like having the model breakdown flowchart images into nodes and edges, or having it parse tables into rows and columns.
 
-{{< video src="gpt4-structured-ocr" >}}
+<video controls playsinline preload="metadata" aria-label="GPT Vision structured OCR demonstration"><source src="/2023/12/structured-ocr-with-gpt-vision/gpt4-structured-ocr.mp4" type="video/mp4" /><a href="/2023/12/structured-ocr-with-gpt-vision/gpt4-structured-ocr.mp4">Download the OCR demonstration video</a>.</video>
 
 ### Why is this useful?
 
@@ -33,7 +35,7 @@ Here's an example of what I mean.
 
 I inputted this page from an Accounting Guideline from PWC that I found online:
 
-![Example Page](gpt4v-ocr.png)
+![Example Page](/2023/12/structured-ocr-with-gpt-vision/gpt4v-ocr.png)
 
 And was able to generate this well structured output. Notice how even the flowchart was parsed into a DAG with individal nodes and decision points.
 

@@ -1,0 +1,15 @@
+---
+import { description, displayDate, postPath, type Post } from '../lib/posts';
+interface Props { posts: Post[]; }
+const { posts } = Astro.props;
+---
+<ol class="post-list">
+  {posts.map((post) => <li class="post-row">
+    <time datetime={post.data.date.toISOString()}>{displayDate(post.data.date)}</time>
+    <div class="post-preview">
+      <h2><a href={postPath(post.data)}>{post.data.title}</a></h2>
+      <p>{description(post)}</p>
+    </div>
+    <img class="post-dock" src="/art/dock.png" width="2067" height="761" alt="" aria-hidden="true" />
+  </li>)}
+</ol>

@@ -1,10 +1,12 @@
-+++
-title = "Running VSCode in Docker"
-date = 2019-04-04T02:13:50Z
-author = "Binal Patel"
-tags = ["docker", "ml engineering"]
-categories = ["coding"]
-+++
+---
+title: "Running VSCode in Docker"
+date: "2019-04-04T02:13:50Z"
+author: "Binal Patel"
+tags: ["docker","ml engineering"]
+categories: ["coding"]
+permalink: "/2019/04/running-vscode-in-docker/"
+description: "A portable development environment, from editor to dependencies."
+---
 
 #### 2020 Update
 A lot has changed since I first wrote this post - as of today I'd recommend you use [VSCode Remote Containers Extension](https://code.visualstudio.com/docs/remote/containers) instead of this. PyCharm has similar functionality as well.
@@ -41,7 +43,7 @@ Why is this useful?
 First - the `Dockerfile`. Here we're setting up our Conda environment, downloading the VScode binary, adding in a `code` folder and a `docker-entrypoint.sh` script. If you've never encountered an entrypoint script before - it essentially is telling Docker that this specific piece of code must always execute when the container starts.
 
 `Dockerfile`:
-```docker
+```dockerfile
  # the base miniconda3 image
  FROM continuumio/miniconda3:latest
  
@@ -66,7 +68,7 @@ First - the `Dockerfile`. Here we're setting up our Conda environment, downloadi
 This is our `docker-entrypoint.sh` script. In summary: if no extra parameters are passed then we start JupyterLab and VSCode, if a parameter is passed than execute that instead. This allows us to do things like develop locally, and when we have a Python script ready just pass in `python our_script.py` without changing anything else.
 
 `docker-entrypoint.sh`:
-```docker
+```dockerfile
 #!/bin/bash
 set -e
 
@@ -87,7 +89,7 @@ docker run -p 8443:8443 -p 8888:8888 -v $(pwd)/data:/data -v $(pwd)/code:/code -
 
 We can then navigate to http://localhost:8443 and we have a fully featured, working version of VSCode:
 
-![VSCode](vscode.png)
+![VSCode](/2019/04/running-vscode-in-docker/vscode.png)
 
 You can even do things like installing extensions. For example you could install Microsoft's Python extension to enable things like autocomplete and formatting, and so on. All your extensions and VSCode configuration will persist in the local `./data` directory, so when you start up the container again you won't have to set everything up again.
 

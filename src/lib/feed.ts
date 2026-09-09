@@ -1,0 +1,6 @@
+import type { Post } from './posts';
+import { postPath, description } from './posts';
+export const xmlEscape = (value: string) => value.replace(/[<>&"']/g, ch => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;' }[ch]!));
+export function feed(posts: Post[], path = '/index.xml', title = 'Binal Patel') {
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>${xmlEscape(title)}</title><link>https://binal.pub/</link><description>Notes on machine learning, data, and building things.</description><language>en-us</language><atom:link href="https://binal.pub${path}" rel="self" type="application/rss+xml"/>${posts.map(post => `<item><title>${xmlEscape(post.data.title)}</title><link>https://binal.pub${postPath(post.data)}</link><guid isPermaLink="true">https://binal.pub${postPath(post.data)}</guid><pubDate>${post.data.date.toUTCString()}</pubDate><description>${xmlEscape(description(post))}</description>${post.data.tags.map(tag => `<category>${xmlEscape(tag)}</category>`).join('')}</item>`).join('')}</channel></rss>`, { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' } });
+}

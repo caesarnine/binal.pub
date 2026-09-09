@@ -1,10 +1,12 @@
-+++
-title = "Extracting and Structuring Recipes Using GPT3"
-date = 2022-12-19
-author = "Binal Patel"
-tags = ["nlp", "gpt3", "llm"]
-categories = ["coding"]
-+++
+---
+title: "Extracting and Structuring Recipes Using GPT3"
+date: "2022-12-19"
+author: "Binal Patel"
+tags: ["nlp","gpt3","llm"]
+categories: ["coding"]
+permalink: "/2022/12/extracting-and-structuring-recipes-using-gpt3/"
+description: "From a recipe on the internet to ingredients you can work with."
+---
 
 The code for this post is [here](https://github.com/caesarnine/llm-experiments/tree/main/2_extracting_and_structuring_recipes).
 
@@ -20,7 +22,7 @@ What this does is:
 
 All the parsing and structuring is occuring within GPT3 - no complex logic on the Python side.
 
-![Parsing Example](gpt3-parsing-recipe.gif)
+![Parsing Example](/2022/12/extracting-and-structuring-recipes-using-gpt3/gpt3-parsing-recipe.gif)
 
 >In the past when I wanted to do something like this I would have finetuned/trained a named entity recognition model (NER). To start from scratch this involved a lot of time and effort to get going (mainly for steps 1 and 2). Steps 1, 2, and 3 would also have to be repeated if we wanted to add a new entity we'd like to extract.
 >1. Gathering a corpus of training data.

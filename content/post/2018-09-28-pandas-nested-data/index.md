@@ -1,10 +1,12 @@
-+++
-title = "Dealing with Nested Data in Pandas"
-date = 2018-09-28T02:13:50Z
-author = "Binal Patel"
-tags = ["python","pandas"]
-categories = ["coding"]
-+++
+---
+title: "Dealing with Nested Data in Pandas"
+date: "2018-09-28T02:13:50Z"
+author: "Binal Patel"
+tags: ["python","pandas"]
+categories: ["coding"]
+permalink: "/2018/09/dealing-with-nested-data-in-pandas/"
+description: "Working with the messy structures inside a tidy dataframe."
+---
 We'll walk through how to deal with nested data using Pandas (for example - a JSON string column), transforming that data into a tabular format that's easier to deal with and analyze.
 <!--more-->
 ***
