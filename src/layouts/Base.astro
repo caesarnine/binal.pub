@@ -1,5 +1,5 @@
 ---
-import River from '../components/River.astro';
+import Garden from '../components/Garden.astro';
 import '../styles/global.css';
 interface Props { title?: string; description?: string; kind?: 'home' | 'article' | 'page'; date?: Date; }
 const { title = 'Binal Patel', description = 'Notes on machine learning, data, and building things.', kind = 'page', date } = Astro.props;
@@ -13,7 +13,7 @@ const pageTitle = title === 'Binal Patel' ? 'Binal Patel · binal.pub' : `${titl
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#faf7ef" />
+    <meta name="theme-color" content="#152936" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" type="application/rss+xml" title="Binal Patel" href="/index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -40,7 +40,6 @@ const pageTitle = title === 'Binal Patel' ? 'Binal Patel · binal.pub' : `${titl
   <body class:list={[`view-${kind}`]}>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
-      <div class="page-column">
         <header class="site-header">
           <a class="wordmark" href="/" aria-label="binal.pub home">binal.pub<span class="wordmark-dot">.</span></a>
           <nav aria-label="Main navigation">
@@ -49,13 +48,14 @@ const pageTitle = title === 'Binal Patel' ? 'Binal Patel · binal.pub' : `${titl
             <a href="https://github.com/caesarnine">GitHub <span aria-hidden="true">↗</span></a>
           </nav>
         </header>
+      <Garden kind={kind} />
+      <div class="page-column">
         <main id="main"><slot /></main>
         <footer class="site-footer">
           <span>© {new Date().getUTCFullYear()} Binal Patel</span>
-          <div><a href="/contact/">Contact</a><a href="/index.xml">RSS</a><button class="motion-toggle" type="button" hidden aria-pressed="false">Pause scenery</button></div>
+          <div><a href="/contact/">Contact</a><a href="/index.xml">RSS</a></div>
         </footer>
       </div>
-      <River />
     </div>
   </body>
 </html>
