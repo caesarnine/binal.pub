@@ -90,11 +90,14 @@ const fragmentSource = `
     skyline = mix(skyline, .337, smoothstep(.47, .64, anchor.x));
     skyline = mix(skyline, .41, smoothstep(.7, .82, anchor.x));
     skyline = mix(skyline, .365, smoothstep(.86, 1., anchor.x));
-    float sky = (1. - smoothstep(skyline - .045, skyline - .008, anchor.y)) * smoothstep(.285, .36, anchor.x);
+    float sky = (1. - smoothstep(skyline - .045, skyline - .008, anchor.y));
+    // Fade the moving layer before either sample reaches the texture boundary.
+    // Clamping moving clouds at the edge otherwise stretches a single pixel column.
+    sky *= smoothstep(.365, .42, anchor.x) * (1. - smoothstep(.865, .92, anchor.x));
     sky *= smoothstep(.13, .24, luminance(original));
     float star = 1. - smoothstep(.007, .021, length((anchor - vec2(.71, .091)) * vec2(1., 1.75)));
     // Two phases let the clouds drift continuously without a visible loop boundary.
-    float phase = fract(u_time / 160.);
+    float phase = fract(u_time / 64.);
     float drift = phase * .065;
     vec2 cloudA = anchor + vec2(drift, sin(u_time * .035) * .0013);
     vec2 cloudB = anchor + vec2(drift - .065, sin(u_time * .035) * .0013);
