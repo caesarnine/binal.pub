@@ -179,14 +179,11 @@ function initGarden(root: HTMLElement) {
   const image = root.querySelector<HTMLImageElement>('.garden-image')!;
   const canvas = root.querySelector<HTMLCanvasElement>('.garden-water')!;
   const atmosphere = root.querySelector<HTMLCanvasElement>('.garden-fireflies')!;
-  const button = root.querySelector<HTMLButtonElement>('.motion-toggle')!;
-  const hint = root.querySelector<HTMLElement>('#garden-description')!;
   const paint = atmosphere.getContext('2d');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const hero = root.dataset.kind === 'home';
   const energy = hero ? .46 : .22;
   let paused = reduceMotion.matches;
-  try { paused ||= localStorage.getItem('binal-scenery-paused') === 'true'; } catch { /* The control also works without storage. */ }
   let renderer = createRenderer(canvas), textureReady = false;
   let inView = true, time = 0, frame = 0, previous = 0, gust = 0;
   let cover = { x: 1, y: 1 };
@@ -280,11 +277,6 @@ function initGarden(root: HTMLElement) {
     frame = requestAnimationFrame(animate);
   }
   function updateMotion() {
-    button.hidden = false;
-    hint.hidden = paused;
-    button.textContent = paused ? 'Play scenery' : 'Pause scenery';
-    button.setAttribute('aria-pressed', String(paused));
-    button.setAttribute('aria-label', paused ? 'Play animated scenery' : 'Pause animated scenery');
     if (paused || !inView || document.hidden) {
       cancelAnimationFrame(frame);
       frame = 0;
@@ -324,12 +316,7 @@ function initGarden(root: HTMLElement) {
     event.preventDefault();
     stir(.55, .65);
   });
-  button.addEventListener('click', () => {
-    paused = !paused;
-    try { localStorage.setItem('binal-scenery-paused', String(paused)); } catch { /* Persistence is optional. */ }
-    updateMotion();
-  });
-  reduceMotion.addEventListener('change', event => { if (event.matches) paused = true; updateMotion(); });
+  reduceMotion.addEventListener('change', event => { paused = event.matches; updateMotion(); });
   document.addEventListener('visibilitychange', updateMotion);
   const visibility = new IntersectionObserver(entries => { inView = entries[0].isIntersecting; updateMotion(); }, { rootMargin: '60px' });
   visibility.observe(landscape);

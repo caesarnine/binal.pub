@@ -3,7 +3,7 @@ interface Props { kind: 'home' | 'article' | 'page'; }
 const { kind } = Astro.props;
 ---
 <garden-scene class:list={['garden-scene', { 'garden-hero': kind === 'home' }]} data-kind={kind}>
-  <div class="garden-landscape" role="group" aria-label="Blue-hour garden" aria-describedby="garden-description">
+  <div class="garden-landscape" role="group" aria-label="Blue-hour garden">
     <img class="garden-image" src="/art/blue-hour-garden.png" alt="A lantern-lit garden and greenhouse overlook a mountain lake at blue hour." width="1659" height="948" fetchpriority={kind === 'home' ? 'high' : 'auto'} />
     <canvas class="garden-water" aria-hidden="true"></canvas>
     <canvas class="garden-fireflies" aria-hidden="true"></canvas>
@@ -13,10 +13,6 @@ const { kind } = Astro.props;
     <h1 id="intro-title">Binal Patel</h1>
     <p>Machine learning engineer &amp; data scientist.</p>
   </section>}
-  <div class="garden-controls">
-    <span id="garden-description" hidden>Move or tap to gather fireflies.</span>
-    <button class="motion-toggle" type="button" hidden aria-pressed="false">Pause scenery</button>
-  </div>
 </garden-scene>
 <script>
   import '../scripts/garden';
