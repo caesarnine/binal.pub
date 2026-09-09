@@ -90,11 +90,14 @@ const fragmentSource = `
     skyline = mix(skyline, .337, smoothstep(.47, .64, anchor.x));
     skyline = mix(skyline, .41, smoothstep(.7, .82, anchor.x));
     skyline = mix(skyline, .365, smoothstep(.86, 1., anchor.x));
-    float sky = (1. - smoothstep(skyline - .045, skyline - .008, anchor.y)) * smoothstep(.285, .36, anchor.x);
+    float sky = (1. - smoothstep(skyline - .045, skyline - .008, anchor.y));
+    // Fade the moving layer before either sample reaches the texture boundary.
+    // Clamping moving clouds at the edge otherwise stretches a single pixel column.
+    sky *= smoothstep(.365, .42, anchor.x) * (1. - smoothstep(.865, .92, anchor.x));
     sky *= smoothstep(.13, .24, luminance(original));
     float star = 1. - smoothstep(.007, .021, length((anchor - vec2(.71, .091)) * vec2(1., 1.75)));
     // Two phases let the clouds drift continuously without a visible loop boundary.
-    float phase = fract(u_time / 160.);
+    float phase = fract(u_time / 64.);
     float drift = phase * .065;
     vec2 cloudA = anchor + vec2(drift, sin(u_time * .035) * .0013);
     vec2 cloudB = anchor + vec2(drift - .065, sin(u_time * .035) * .0013);
@@ -176,14 +179,11 @@ function initGarden(root: HTMLElement) {
   const image = root.querySelector<HTMLImageElement>('.garden-image')!;
   const canvas = root.querySelector<HTMLCanvasElement>('.garden-water')!;
   const atmosphere = root.querySelector<HTMLCanvasElement>('.garden-fireflies')!;
-  const button = root.querySelector<HTMLButtonElement>('.motion-toggle')!;
-  const hint = root.querySelector<HTMLElement>('#garden-description')!;
   const paint = atmosphere.getContext('2d');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const hero = root.dataset.kind === 'home';
   const energy = hero ? .46 : .22;
   let paused = reduceMotion.matches;
-  try { paused ||= localStorage.getItem('binal-scenery-paused') === 'true'; } catch { /* The control also works without storage. */ }
   let renderer = createRenderer(canvas), textureReady = false;
   let inView = true, time = 0, frame = 0, previous = 0, gust = 0;
   let cover = { x: 1, y: 1 };
@@ -277,11 +277,6 @@ function initGarden(root: HTMLElement) {
     frame = requestAnimationFrame(animate);
   }
   function updateMotion() {
-    button.hidden = false;
-    hint.hidden = paused;
-    button.textContent = paused ? 'Play scenery' : 'Pause scenery';
-    button.setAttribute('aria-pressed', String(paused));
-    button.setAttribute('aria-label', paused ? 'Play animated scenery' : 'Pause animated scenery');
     if (paused || !inView || document.hidden) {
       cancelAnimationFrame(frame);
       frame = 0;
@@ -321,12 +316,7 @@ function initGarden(root: HTMLElement) {
     event.preventDefault();
     stir(.55, .65);
   });
-  button.addEventListener('click', () => {
-    paused = !paused;
-    try { localStorage.setItem('binal-scenery-paused', String(paused)); } catch { /* Persistence is optional. */ }
-    updateMotion();
-  });
-  reduceMotion.addEventListener('change', event => { if (event.matches) paused = true; updateMotion(); });
+  reduceMotion.addEventListener('change', event => { paused = event.matches; updateMotion(); });
   document.addEventListener('visibilitychange', updateMotion);
   const visibility = new IntersectionObserver(entries => { inView = entries[0].isIntersecting; updateMotion(); }, { rootMargin: '60px' });
   visibility.observe(landscape);

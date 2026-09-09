@@ -46,11 +46,6 @@ main { min-width: 0; }
 .introduction { position: absolute; left: clamp(30px, 5vw, 74px); top: clamp(40px, 5vw, 74px); right: 30px; max-width: 760px; pointer-events: none; text-shadow: 0 2px 22px #0d183c80; }
 .introduction h1 { font-family: var(--serif); font-size: clamp(4rem, 6.5vw, 6.6rem); font-weight: 400; letter-spacing: -.055em; line-height: 1.04; margin: 0 0 22px; color: #faf0de; }
 .introduction p { font-size: clamp(1rem, 1.65vw, 1.35rem); line-height: 1.6; color: #e4e5e0; margin: 0; max-width: 37ch; }
-.garden-controls { position: absolute; left: clamp(24px, 5vw, 74px); right: clamp(24px, 5vw, 74px); bottom: 27px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: #d0d9d7; font-size: .75rem; }
-.garden-hero .garden-controls { bottom: 42px; }
-.garden-controls>span { opacity: .82; }
-.motion-toggle { flex-shrink: 0; margin-left: auto; border: 1px solid #aababa55; background: #14263294; padding: 8px 12px; border-radius: 4px; font-size: .875rem; color: #e3e5dd; backdrop-filter: blur(8px); }
-.motion-toggle:hover { color: var(--accent); border-color: #e4be8470; }
 .view-home .page-column { margin-top: -1px; }
 .writing { padding-top: 25px; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 22px; color: var(--muted); }
@@ -114,7 +109,6 @@ main { min-width: 0; }
   .introduction h1 { font-size: 4.8rem; }
   .view-home .post-list { gap: 25px; }
   .view-home .post-preview h2 { font-size: 1.65rem; }
-  .garden-controls { left: 32px; right: 32px; }
 }
 @media(max-width:760px) {
   .site-header { min-height: 82px; padding: 18px 24px; gap: 20px; }
@@ -126,10 +120,6 @@ main { min-width: 0; }
   .introduction { left: 26px; right: 24px; top: 34px; }
   .introduction h1 { font-size: 4.2rem; margin-bottom: 15px; }
   .introduction p { font-size: 1rem; max-width: 27ch; }
-  .garden-controls { left: 24px; right: 24px; bottom: 22px; }
-  .garden-controls>span { max-width: 17ch; font-size: .75rem; line-height: 1.5; }
-  .garden-hero .garden-controls { bottom: 33px; }
-  .motion-toggle { padding: 7px 10px; }
   .writing { padding-top: 10px; }
   .section-heading { padding-bottom: 18px; }
   .section-heading>span { display: none; }
@@ -153,7 +143,6 @@ main { min-width: 0; }
   .page-column { padding-inline: 20px; }
   .introduction h1 { font-size: 3.55rem; }
   .introduction { left: 22px; }
-  .garden-controls { left: 20px; right: 20px; }
   .post-preview h2, .view-home .post-preview h2 { font-size: 1.7rem; }
 }
 @media(prefers-reduced-motion:reduce) { *, *::before, *::after { scroll-behavior: auto!important; transition: none!important; } }
